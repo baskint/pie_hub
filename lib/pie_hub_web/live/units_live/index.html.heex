@@ -1,0 +1,51 @@
+<h1>Listing Units</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal PieHubWeb.UnitsLive.FormComponent,
+    id: @units.id || :new,
+    title: @page_title,
+    action: @live_action,
+    units: @units,
+    return_to: Routes.units_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Available storage</th>
+      <th>Up since</th>
+      <th>Powered on</th>
+      <th>Last check</th>
+      <th>Ip address1</th>
+      <th>Ip address2</th>
+      <th>Total storage</th>
+      <th>Used storage</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="units">
+    <%= for units <- @units_collection do %>
+      <tr id={"units-#{units.id}"}>
+        <td><%= units.name %></td>
+        <td><%= units.available_storage %></td>
+        <td><%= units.up_since %></td>
+        <td><%= units.powered_on %></td>
+        <td><%= units.last_check %></td>
+        <td><%= units.ip_address1 %></td>
+        <td><%= units.ip_address2 %></td>
+        <td><%= units.total_storage %></td>
+        <td><%= units.used_storage %></td>
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.units_show_path(@socket, :show, units) %></span>
+          <span><%= live_patch "Edit", to: Routes.units_index_path(@socket, :edit, units) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: units.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Units", to: Routes.units_index_path(@socket, :new) %></span>

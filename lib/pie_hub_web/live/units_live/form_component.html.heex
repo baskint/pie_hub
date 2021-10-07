@@ -1,0 +1,52 @@
+<div>
+  <h2><%= @title %></h2>
+
+  <.form
+    let={f}
+    for={@changeset}
+    id="units-form"
+    phx-target={@myself}
+    phx-change="validate"
+    phx-submit="save">
+  
+    <%= label f, :name %>
+    <%= text_input f, :name %>
+    <%= error_tag f, :name %>
+  
+    <%= label f, :available_storage %>
+    <%= text_input f, :available_storage %>
+    <%= error_tag f, :available_storage %>
+  
+    <%= label f, :up_since %>
+    <%= datetime_select f, :up_since %>
+    <%= error_tag f, :up_since %>
+  
+    <%= label f, :powered_on %>
+    <%= checkbox f, :powered_on %>
+    <%= error_tag f, :powered_on %>
+  
+    <%= label f, :last_check %>
+    <%= datetime_select f, :last_check %>
+    <%= error_tag f, :last_check %>
+  
+    <%= label f, :ip_address1 %>
+    <%= text_input f, :ip_address1 %>
+    <%= error_tag f, :ip_address1 %>
+  
+    <%= label f, :ip_address2 %>
+    <%= text_input f, :ip_address2 %>
+    <%= error_tag f, :ip_address2 %>
+  
+    <%= label f, :total_storage %>
+    <%= text_input f, :total_storage %>
+    <%= error_tag f, :total_storage %>
+  
+    <%= label f, :used_storage %>
+    <%= text_input f, :used_storage %>
+    <%= error_tag f, :used_storage %>
+  
+    <div>
+      <%= submit "Save", phx_disable_with: "Saving..." %>
+    </div>
+  </.form>
+</div>

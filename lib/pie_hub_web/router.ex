@@ -17,6 +17,14 @@ defmodule PieHubWeb.Router do
   scope "/", PieHubWeb do
     pipe_through :browser
 
+    live "/units", UnitsLive.Index, :index
+    live "/units/new", UnitsLive.Index, :new
+    live "/units/:id/edit", UnitsLive.Index, :edit
+
+    live "/units/:id", UnitsLive.Show, :show
+    live "/units/:id/show/edit", UnitsLive.Show, :edit
+
+
     get "/", PageController, :index
   end
 

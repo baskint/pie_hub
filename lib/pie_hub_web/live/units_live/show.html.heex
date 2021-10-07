@@ -1,0 +1,62 @@
+<h1>Show Units</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal PieHubWeb.UnitsLive.FormComponent,
+    id: @units.id,
+    title: @page_title,
+    action: @live_action,
+    units: @units,
+    return_to: Routes.units_show_path(@socket, :show, @units) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @units.name %>
+  </li>
+
+  <li>
+    <strong>Available storage:</strong>
+    <%= @units.available_storage %>
+  </li>
+
+  <li>
+    <strong>Up since:</strong>
+    <%= @units.up_since %>
+  </li>
+
+  <li>
+    <strong>Powered on:</strong>
+    <%= @units.powered_on %>
+  </li>
+
+  <li>
+    <strong>Last check:</strong>
+    <%= @units.last_check %>
+  </li>
+
+  <li>
+    <strong>Ip address1:</strong>
+    <%= @units.ip_address1 %>
+  </li>
+
+  <li>
+    <strong>Ip address2:</strong>
+    <%= @units.ip_address2 %>
+  </li>
+
+  <li>
+    <strong>Total storage:</strong>
+    <%= @units.total_storage %>
+  </li>
+
+  <li>
+    <strong>Used storage:</strong>
+    <%= @units.used_storage %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.units_show_path(@socket, :edit, @units), class: "button" %></span> |
+<span><%= live_redirect "Back", to: Routes.units_index_path(@socket, :index) %></span>
