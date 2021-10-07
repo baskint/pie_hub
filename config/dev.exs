@@ -25,7 +25,15 @@ config :pie_hub, PieHubWeb.Endpoint,
   secret_key_base: "NIum51apcZpv/wlzx/MThXHU0H3fjAbnQ6Qx93WRrvCVS/ZPps/67kiW7HQGT400",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
+    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    npx: [
+    "tailwindcss",
+    "--input=css/app.css",
+    "--output=../priv/static/assets/app.css",
+    "--postcss",
+    "--watch",
+    cd: Path.expand("../assets", __DIR__)
+  ]
   ]
 
 # ## SSL Support
