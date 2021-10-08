@@ -2,12 +2,14 @@ defmodule PieHub.RaspiUnit.Units do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @primary_key false
+  @derive {Phoenix.Param, key: :name}
   schema "units" do
     field :available_storage, :string
     field :ip_address1, :string
     field :ip_address2, :string
     field :last_check, :utc_datetime
-    field :name, :string
+    field :name, :string, primary_key: true
     field :model_type, :string
     field :powered_on, :boolean, default: false
     field :total_storage, :string
@@ -17,6 +19,7 @@ defmodule PieHub.RaspiUnit.Units do
 
     timestamps()
   end
+
 
   @doc false
   def changeset(units, attrs) do

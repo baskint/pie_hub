@@ -9,11 +9,11 @@ defmodule PieHubWeb.UnitsLive.Show do
   end
 
   @impl true
-  def handle_params(%{"id" => id}, _, socket) do
+  def handle_params(%{"id" => name}, _, socket) do
     {:noreply,
      socket
      |> assign(:page_title, page_title(socket.assigns.live_action))
-     |> assign(:units, RaspiUnit.get_units!(id))}
+     |> assign(:units, RaspiUnit.get_units!(name))}
   end
 
   defp page_title(:show), do: "Show Units"

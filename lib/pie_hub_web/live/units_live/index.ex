@@ -14,10 +14,10 @@ defmodule PieHubWeb.UnitsLive.Index do
     {:noreply, apply_action(socket, socket.assigns.live_action, params)}
   end
 
-  defp apply_action(socket, :edit, %{"id" => id}) do
+  defp apply_action(socket, :edit, %{"name" => name}) do
     socket
     |> assign(:page_title, "Edit Units")
-    |> assign(:units, RaspiUnit.get_units!(id))
+    |> assign(:units, RaspiUnit.get_units!(name))
   end
 
   defp apply_action(socket, :new, _params) do
@@ -33,8 +33,8 @@ defmodule PieHubWeb.UnitsLive.Index do
   end
 
   @impl true
-  def handle_event("delete", %{"id" => id}, socket) do
-    units = RaspiUnit.get_units!(id)
+  def handle_event("delete", %{"id" => name}, socket) do
+    units = RaspiUnit.get_units!(name)
     {:ok, _} = RaspiUnit.delete_units(units)
 
     {:noreply, assign(socket, :units_collection, list_units())}

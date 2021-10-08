@@ -35,7 +35,7 @@ defmodule PieHub.RaspiUnit do
       ** (Ecto.NoResultsError)
 
   """
-  def get_units!(id), do: Repo.get!(Units, id)
+  def get_units!(name), do: Repo.get!(Units, name)
 
   @doc """
   Creates a units.

@@ -2,8 +2,8 @@ defmodule PieHub.Repo.Migrations.CreateUnits do
   use Ecto.Migration
 
   def change do
-    create table(:units) do
-      add :name, :string
+    create table(:units, primary_key: false) do
+      add :name, :string, primary_key: true
       add :model_type, :string
       add :available_storage, :string
       add :up_since, :utc_datetime

@@ -2,7 +2,7 @@
 
 <%= if @live_action in [:new, :edit] do %>
   <%= live_modal PieHubWeb.UnitsLive.FormComponent,
-    id: @units.id || :new,
+    name: @units.name || :new,
     title: @page_title,
     action: @live_action,
     units: @units,
@@ -27,7 +27,7 @@
   </thead>
   <tbody id="units">
     <%= for units <- @units_collection do %>
-      <tr id={"units-#{units.id}"}>
+      <tr id={"units-#{units.name}"}>
         <td><%= units.name %></td>
         <td><%= units.available_storage %></td>
         <td><%= units.up_since %></td>
@@ -41,7 +41,7 @@
         <td>
           <span><%= live_redirect "Show", to: Routes.units_show_path(@socket, :show, units) %></span>
           <span><%= live_patch "Edit", to: Routes.units_index_path(@socket, :edit, units) %></span>
-          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: units.id, data: [confirm: "Are you sure?"] %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: units.name, data: [confirm: "Are you sure?"] %></span>
         </td>
       </tr>
     <% end %>
