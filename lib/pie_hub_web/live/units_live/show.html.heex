@@ -2,7 +2,7 @@
 
 <%= if @live_action in [:edit] do %>
   <%= live_modal PieHubWeb.UnitsLive.FormComponent,
-    id: @units.id,
+    id: @units.name,
     title: @page_title,
     action: @live_action,
     units: @units,

@@ -14,7 +14,7 @@ defmodule PieHubWeb.UnitsLive.Index do
     {:noreply, apply_action(socket, socket.assigns.live_action, params)}
   end
 
-  defp apply_action(socket, :edit, %{"name" => name}) do
+  defp apply_action(socket, :edit, %{"id" => name}) do
     socket
     |> assign(:page_title, "Edit Units")
     |> assign(:units, RaspiUnit.get_units!(name))
