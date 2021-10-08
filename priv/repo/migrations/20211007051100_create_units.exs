@@ -1,9 +1,9 @@
-defmodule PieHub.Repo.Migrations.CreateUnits do
+defmodule PieHub.Repo.Migrations.AddUnitsTable do
   use Ecto.Migration
 
-  def change do
+  def up do
     create table(:units) do
-      add :name, :string
+      add :name, :string, null: false
       add :model_type, :string
       add :available_storage, :string
       add :up_since, :utc_datetime
@@ -17,5 +17,11 @@ defmodule PieHub.Repo.Migrations.CreateUnits do
 
       timestamps()
     end
+
+    create unique_index(:units, [:name])
+  end
+
+  def down do
+    drop table(:units)
   end
 end

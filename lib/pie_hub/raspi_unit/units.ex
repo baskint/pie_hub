@@ -23,5 +23,6 @@ defmodule PieHub.RaspiUnit.Units do
     units
     |> cast(attrs, [:name, :model_type, :available_storage, :up_since, :powered_on, :last_check, :ip_address1, :ip_address2, :total_storage, :used_storage, :description])
     |> validate_required([:name, :available_storage, :powered_on, :last_check, :ip_address1, :ip_address2, :total_storage, :used_storage])
+    |> unique_constraint(:name, name: :idx_pi_name)
   end
 end
