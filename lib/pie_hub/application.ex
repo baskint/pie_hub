@@ -4,6 +4,7 @@ defmodule PieHub.Application do
   @moduledoc false
 
   use Application
+  alias PieHub.RaspiChecker
 
   @impl true
   def start(_type, _args) do
@@ -15,9 +16,10 @@ defmodule PieHub.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: PieHub.PubSub},
       # Start the Endpoint (http/https)
-      PieHubWeb.Endpoint
+      PieHubWeb.Endpoint,
       # Start a worker by calling: PieHub.Worker.start_link(arg)
       # {PieHub.Worker, arg}
+      {RaspiChecker, []}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

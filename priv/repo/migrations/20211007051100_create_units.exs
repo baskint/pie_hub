@@ -9,7 +9,7 @@ defmodule PieHub.Repo.Migrations.AddUnitsTable do
       add :up_since, :utc_datetime
       add :powered_on, :boolean, default: false, null: false
       add :last_check, :utc_datetime
-      add :ip_address1, :string
+      add :ip_address1, :string, null: false
       add :ip_address2, :string
       add :total_storage, :string
       add :used_storage, :string
