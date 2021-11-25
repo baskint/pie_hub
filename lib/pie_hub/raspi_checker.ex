@@ -42,7 +42,7 @@ defmodule PieHub.RaspiChecker do
 
   defp fetching_stats_for(ip_address) do
     # IO.puts ip_address
-    a = Repo.get_by(Units, ip_address1: ip_address)
+    _a = Repo.get_by(Units, ip_address1: ip_address)
       |> Ecto.Changeset.change(
           %{up_since: DateTime.truncate(DateTime.utc_now(), :second)}
         )
